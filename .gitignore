@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.egg-info/
+.eggs/
+build/
+dist/
+.python-version
+.venv/
+.env
+env/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Editors/OS
+.DS_Store
+.idea/
+.vscode/
+
+# Project data policy
+raw_data/
