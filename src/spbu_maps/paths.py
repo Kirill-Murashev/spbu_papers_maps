@@ -7,6 +7,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 GEOJSON_DIR = PROJECT_ROOT / "geojsons"
 RAW_DATA_DIR = PROJECT_ROOT / "raw_data"
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+MAPS_DIR = PROJECT_ROOT / "maps"
 
 
 def ensure_outputs_dir() -> Path:
