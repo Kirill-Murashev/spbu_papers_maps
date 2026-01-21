@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c7d9bd476e036f4705f8ac1ca9506c4a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c7d9bd476e036f4705f8ac1ca9506c4a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c7d9bd476e036f4705f8ac1ca9506c4a = L.map(
+                "map_c7d9bd476e036f4705f8ac1ca9506c4a",
+                {
+                    center: [60.0083736095, 30.409246315999997],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_108f06bf494775e9b3045c8432358967 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_108f06bf494775e9b3045c8432358967.addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+        
+    
+        function geo_json_4ead44035bc8587e40f915b66891862e_styler(feature) {
+            switch(feature.properties.descr) {
+                case "78:10:0005203": 
+                    return {"color": "#000000", "fillColor": "#222222ff", "fillOpacity": 0.65, "weight": 1.5};
+                case "78:10:0005209": 
+                    return {"color": "#000000", "fillColor": "#979797ff", "fillOpacity": 0.65, "weight": 1.5};
+                case "78:10:0005211": 
+                    return {"color": "#000000", "fillColor": "#5a5a5aff", "fillOpacity": 0.65, "weight": 1.5};
+                case "78:10:0005212": 
+                    return {"color": "#000000", "fillColor": "#000000ff", "fillOpacity": 0.65, "weight": 1.5};
+                case "78:10:0005217": 
+                    return {"color": "#000000", "fillColor": "#adadadff", "fillOpacity": 0.65, "weight": 1.5};
+                case "78:10:0005218": 
+                    return {"color": "#000000", "fillColor": "#464646ff", "fillOpacity": 0.65, "weight": 1.5};
+                default:
+                    return {"color": "#000000", "fillColor": "#ffffffff", "fillOpacity": 0.65, "weight": 1.5};
+            }
+        }
+        function geo_json_4ead44035bc8587e40f915b66891862e_highlighter(feature) {
+            switch(feature.properties.descr) {
+                default:
+                    return {"color": "black", "weight": 2.5};
+            }
+        }
+
+        function geo_json_4ead44035bc8587e40f915b66891862e_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_4ead44035bc8587e40f915b66891862e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_4ead44035bc8587e40f915b66891862e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_4ead44035bc8587e40f915b66891862e = L.geoJson(null, {
+                onEachFeature: geo_json_4ead44035bc8587e40f915b66891862e_onEachFeature,
+            
+                style: geo_json_4ead44035bc8587e40f915b66891862e_styler,
+            ...{
+}
+        });
+
+        function geo_json_4ead44035bc8587e40f915b66891862e_add (data) {
+            geo_json_4ead44035bc8587e40f915b66891862e
+                .addData(data);
+        }
+            geo_json_4ead44035bc8587e40f915b66891862e_add({"features": [{"geometry": {"coordinates": [[[30.380581811999996, 59.99604609], [30.385111436000003, 59.995476652], [30.387655220999996, 59.995156770000015], [30.391310228, 59.99469712099999], [30.394411875, 59.999665858], [30.394875984000006, 60.000113259999985], [30.391061955000005, 60.00076645500001], [30.386164698000005, 60.00158489999999], [30.380581811999996, 59.99604609]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005203", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 1, "descr": "78:10:0005203", "externalKey": "78:10:0005203", "interactionId": 111457359, "label": "78:10:0005203", "median": 202150.54, "median_round": 202151, "options": {"cad_num": "78:10:0005203", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 44, "cnt_land_geom": 37, "cnt_land_not_geom": 7, "cnt_oks": 64, "cnt_oks_geom": 3, "cnt_oks_not_geom": 61, "cnt_pik": 0, "cost_value_total_geom": 1729665207.67, "date_cr": "2020-08-24", "guid": "1c39f802-0938-4cfd-8d9a-c50a8f52515f", "id": 4424107, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005203", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005203", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 228008, "sum_land_geom_area": 227003, "tolerance": "0.10", "ua_id": 7346351}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.502429", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.229731", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.386164698000005, 60.00158489999999], [30.391061955000005, 60.00076645500001], [30.394875984000006, 60.000113259999985], [30.399693985999992, 60.00493132500001], [30.402313138, 60.00747967400001], [30.394548506000003, 60.009942683000006], [30.391140875000005, 60.00652937], [30.387571800999996, 60.002982974000005], [30.386164698000005, 60.00158489999999]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005209", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 20, "descr": "78:10:0005209", "externalKey": "78:10:0005209", "interactionId": 111457308, "label": "78:10:0005209", "median": 183205.76, "median_round": 183206, "options": {"cad_num": "78:10:0005209", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 92, "cnt_land_geom": 75, "cnt_land_not_geom": 17, "cnt_oks": 71, "cnt_oks_geom": 1, "cnt_oks_not_geom": 70, "cnt_pik": 0, "cost_value_total_geom": 4417999401.58, "date_cr": "2020-08-24", "guid": "2bb69c9b-47eb-47dc-a37e-af9fea308475", "id": 4424066, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005209", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005209", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 282396, "sum_land_geom_area": 259220, "tolerance": "0.10", "ua_id": 7347006}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.01486", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.235295", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.397722747, 60.01303159799998], [30.405844321000004, 60.01098378399999], [30.408435802, 60.010336730000006], [30.417341002, 60.01921941300001], [30.407560025000002, 60.021673819000014], [30.406663885000004, 60.021963980999985], [30.397722747, 60.01303159799998]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005211", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 3, "descr": "78:10:0005211", "externalKey": "78:10:0005211", "interactionId": 111457382, "label": "78:10:0005211", "median": 194050.99, "median_round": 194051, "options": {"cad_num": "78:10:0005211", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 141, "cnt_land_geom": 122, "cnt_land_not_geom": 19, "cnt_oks": 101, "cnt_oks_geom": 5, "cnt_oks_not_geom": 96, "cnt_pik": 0, "cost_value_total_geom": 6391199733.85, "date_cr": "2020-08-24", "guid": "cb6e33c6-5c3d-43a8-9d3c-f686b252a431", "id": 4424144, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005211", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005211", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 435362, "sum_land_geom_area": 422027, "tolerance": "0.10", "ua_id": 7346908}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.738919", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.242741", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.385596893, 60.015573541999984], [30.391655406000005, 60.01451634500001], [30.393770211000003, 60.014038479], [30.397722747, 60.01303159799998], [30.406663885000004, 60.021963980999985], [30.39530685, 60.02512556099999], [30.392764537000005, 60.02277790699999], [30.388420996, 60.018800129000006], [30.386756377, 60.017214509], [30.386425423999995, 60.016818750000006], [30.385596893, 60.015573541999984]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005212", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 1, "descr": "78:10:0005212", "externalKey": "78:10:0005212", "interactionId": 111457362, "label": "78:10:0005212", "median": 207865.17, "median_round": 207865, "options": {"cad_num": "78:10:0005212", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 178, "cnt_land_geom": 142, "cnt_land_not_geom": 36, "cnt_oks": 117, "cnt_oks_geom": 3, "cnt_oks_not_geom": 114, "cnt_pik": 0, "cost_value_total_geom": 7444782711.82, "date_cr": "2020-08-24", "guid": "cc5af886-9fb9-48a7-a698-32aef6137444", "id": 4424128, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005212", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005212", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 539577, "sum_land_geom_area": 475687, "tolerance": "0.10", "ua_id": 7346936}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.532749", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.240654", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.408435802, 60.010336730000006], [30.408689513000002, 60.01026772999999], [30.422956687000003, 60.006689996000006], [30.432268194000002, 60.014553161], [30.432065523, 60.015510279999994], [30.417341002, 60.01921941300001], [30.408435802, 60.010336730000006]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005217", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 9, "descr": "78:10:0005217", "externalKey": "78:10:0005217", "interactionId": 111457280, "label": "78:10:0005217", "median": 179797.98, "median_round": 179798, "options": {"cad_num": "78:10:0005217", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 178, "cnt_land_geom": 161, "cnt_land_not_geom": 17, "cnt_oks": 135, "cnt_oks_geom": 3, "cnt_oks_not_geom": 132, "cnt_pik": 0, "cost_value_total_geom": 9560991509.19, "date_cr": "2020-08-24", "guid": "9cf0c357-815e-405c-b602-49659e2a717d", "id": 4424040, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005217", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005217", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 537249, "sum_land_geom_area": 519292, "tolerance": "0.10", "ua_id": 7346968}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:00.734347", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.245837", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.404998858000003, 60.00664031899999], [30.415282665, 60.00337175400001], [30.415586919, 60.003336690000005], [30.416178788, 60.00336893499999], [30.417012490000005, 60.003533256999994], [30.417947132, 60.003742133], [30.418447466999996, 60.003905704000005], [30.419013121999996, 60.00413189700001], [30.419705336999996, 60.00444385200001], [30.420372450000002, 60.00475408899999], [30.420431007, 60.00490523400001], [30.421774384, 60.006044198], [30.422323425999995, 60.00615760400001], [30.422956687000003, 60.006689996000006], [30.408689513000002, 60.01026772999999], [30.404998858000003, 60.00664031899999]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005218", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 9, "descr": "78:10:0005218", "externalKey": "78:10:0005218", "interactionId": 111457274, "label": "78:10:0005218", "median": 197238.66, "median_round": 197239, "options": {"cad_num": "78:10:0005218", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 81, "cnt_land_geom": 70, "cnt_land_not_geom": 11, "cnt_oks": 75, "cnt_oks_geom": 2, "cnt_oks_not_geom": 73, "cnt_pik": 0, "cost_value_total_geom": 5090682666.85, "date_cr": "2020-08-24", "guid": "5cf2cbcf-7908-469d-9fd6-14631f4d6557", "id": 4424041, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005218", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005218", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 266732, "sum_land_geom_area": 238163, "tolerance": "0.10", "ua_id": 7346966}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:00.679164", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.244723", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.427121531, 59.993263926000004], [30.428789414, 59.992828405], [30.433425021, 59.991621658], [30.437896071, 59.995834514], [30.43791082, 59.99636789600001], [30.437457221999995, 59.998074977000016], [30.435004310999997, 59.997926445999994], [30.434625923999995, 59.997919523], [30.433978021, 59.997926588000006], [30.433399409, 59.997956491000004], [30.432780157, 59.998016953000004], [30.432233830999998, 59.99810427999999], [30.429875461, 59.995860846000014], [30.428815585999995, 59.99485244900001], [30.427121531, 59.993263926000004]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005225", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 2, "descr": "78:10:0005225", "externalKey": "78:10:0005225", "interactionId": 111457317, "label": "78:10:0005225", "median": 158923.865, "median_round": 158924, "options": {"cad_num": "78:10:0005225", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 36, "cnt_land_geom": 31, "cnt_land_not_geom": 5, "cnt_oks": 25, "cnt_oks_geom": 2, "cnt_oks_not_geom": 23, "cnt_pik": 0, "cost_value_total_geom": 1764012030.64, "date_cr": "2020-08-24", "guid": "d20c8263-bd55-4789-8d3d-e4bf9c0634ad", "id": 4424062, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005225", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005225", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 120009, "sum_land_geom_area": 119914, "tolerance": "0.10", "ua_id": 7347014}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.103221", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.252685", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_4ead44035bc8587e40f915b66891862e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["cadnum", "median_round", "count"];
+    let aliases = ["\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "\u041c\u0435\u0434\u0438\u0430\u043d\u0430 \u0446\u0435\u043d\u044b \u0437\u0430 \u043a\u0432.\u043c", "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_4ead44035bc8587e40f915b66891862e.addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+        
+    
+            var feature_group_12b7844f9a68ece346a88a882175a56a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_df181cb2008e6b07f74805f914ed255b = L.marker(
+                [59.99772813288889, 30.387972780111113],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_a90f0629f95f09c1b839ae053309bca9 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005203\u003cbr\u003e\u043c\u0435\u0434: 202151\u003cbr\u003en=1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_df181cb2008e6b07f74805f914ed255b.setIcon(div_icon_a90f0629f95f09c1b839ae053309bca9);
+            
+    
+            var marker_442c0fd871a29b13e0eb8ccc18f56d8c = L.marker(
+                [60.003990615666666, 30.392615071222224],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_85fafb6a726c1c1ee54dc73ba40e92b0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005209\u003cbr\u003e\u043c\u0435\u0434: 183206\u003cbr\u003en=20\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_442c0fd871a29b13e0eb8ccc18f56d8c.setIcon(div_icon_85fafb6a726c1c1ee54dc73ba40e92b0);
+            
+    
+            var marker_22608eece41e690e7e950ef600473a56 = L.marker(
+                [60.015748703285716, 30.405898647000004],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_e180ea724bb00ba40170c84df5ce8d48 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005211\u003cbr\u003e\u043c\u0435\u0434: 194051\u003cbr\u003en=3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_22608eece41e690e7e950ef600473a56.setIcon(div_icon_e180ea724bb00ba40170c84df5ce8d48);
+            
+    
+            var marker_b177f57da51fca7c2fcdf0b665eeb070 = L.marker(
+                [60.01776675845454, 30.39188001990909],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_8a8a9e1a9a03635ca12673fc8823f5e4 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005212\u003cbr\u003e\u043c\u0435\u0434: 207865\u003cbr\u003en=1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b177f57da51fca7c2fcdf0b665eeb070.setIcon(div_icon_8a8a9e1a9a03635ca12673fc8823f5e4);
+            
+    
+            var marker_8154f16474feddb267cb69ed619bcf0e = L.marker(
+                [60.01241629142857, 30.418598931857144],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_7e40dcf9b4047f3a0c69d83a669ab27a = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005217\u003cbr\u003e\u043c\u0435\u0434: 179798\u003cbr\u003en=9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8154f16474feddb267cb69ed619bcf0e.setIcon(div_icon_7e40dcf9b4047f3a0c69d83a669ab27a);
+            
+    
+            var marker_2a01c3c867c18d8e459b728527662d92 = L.marker(
+                [60.0051208569375, 30.4166074439375],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_3ee7310e62fd3bb468b3160032362d2e = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005218\u003cbr\u003e\u043c\u0435\u0434: 197239\u003cbr\u003en=9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_2a01c3c867c18d8e459b728527662d92.setIcon(div_icon_3ee7310e62fd3bb468b3160032362d2e);
+            
+    
+            var marker_f415513fb836c648c7b8dbd406fc0b82 = L.marker(
+                [59.995987925200005, 30.432695620666667],
+                {
+}
+            ).addTo(feature_group_12b7844f9a68ece346a88a882175a56a);
+        
+    
+            var div_icon_2ab1683f3e72443fb390baf240657b8c = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:10px; font-weight:bold; color:black; text-shadow:1px 1px 2px white;\u0027\u003e0005225\u003cbr\u003e\u043c\u0435\u0434: 158924\u003cbr\u003en=2\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f415513fb836c648c7b8dbd406fc0b82.setIcon(div_icon_2ab1683f3e72443fb390baf240657b8c);
+            
+    
+            feature_group_12b7844f9a68ece346a88a882175a56a.addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+        
+    
+            var feature_group_f48503a6a3f1011726f46d970d5127ee = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_b7ec4d227955ebb713f8bf5efc689f23_styler(feature) {
+            switch(feature.properties.descr) {
+                default:
+                    return {"color": "black", "fillOpacity": 0, "weight": 2};
+            }
+        }
+        function geo_json_b7ec4d227955ebb713f8bf5efc689f23_highlighter(feature) {
+            switch(feature.properties.descr) {
+                default:
+                    return {"color": "black", "weight": 3};
+            }
+        }
+
+        function geo_json_b7ec4d227955ebb713f8bf5efc689f23_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_b7ec4d227955ebb713f8bf5efc689f23.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_b7ec4d227955ebb713f8bf5efc689f23_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_b7ec4d227955ebb713f8bf5efc689f23 = L.geoJson(null, {
+                onEachFeature: geo_json_b7ec4d227955ebb713f8bf5efc689f23_onEachFeature,
+            
+                style: geo_json_b7ec4d227955ebb713f8bf5efc689f23_styler,
+            ...{
+}
+        });
+
+        function geo_json_b7ec4d227955ebb713f8bf5efc689f23_add (data) {
+            geo_json_b7ec4d227955ebb713f8bf5efc689f23
+                .addData(data);
+        }
+            geo_json_b7ec4d227955ebb713f8bf5efc689f23_add({"features": [{"geometry": {"coordinates": [[[30.380581811999996, 59.99604609], [30.385111436000003, 59.995476652], [30.387655220999996, 59.995156770000015], [30.391310228, 59.99469712099999], [30.394411875, 59.999665858], [30.394875984000006, 60.000113259999985], [30.391061955000005, 60.00076645500001], [30.386164698000005, 60.00158489999999], [30.380581811999996, 59.99604609]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005203", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 1, "descr": "78:10:0005203", "externalKey": "78:10:0005203", "interactionId": 111457359, "label": "78:10:0005203", "median": 202150.54, "median_round": 202151, "options": {"cad_num": "78:10:0005203", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 44, "cnt_land_geom": 37, "cnt_land_not_geom": 7, "cnt_oks": 64, "cnt_oks_geom": 3, "cnt_oks_not_geom": 61, "cnt_pik": 0, "cost_value_total_geom": 1729665207.67, "date_cr": "2020-08-24", "guid": "1c39f802-0938-4cfd-8d9a-c50a8f52515f", "id": 4424107, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005203", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005203", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 228008, "sum_land_geom_area": 227003, "tolerance": "0.10", "ua_id": 7346351}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.502429", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.229731", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.386164698000005, 60.00158489999999], [30.391061955000005, 60.00076645500001], [30.394875984000006, 60.000113259999985], [30.399693985999992, 60.00493132500001], [30.402313138, 60.00747967400001], [30.394548506000003, 60.009942683000006], [30.391140875000005, 60.00652937], [30.387571800999996, 60.002982974000005], [30.386164698000005, 60.00158489999999]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005209", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 20, "descr": "78:10:0005209", "externalKey": "78:10:0005209", "interactionId": 111457308, "label": "78:10:0005209", "median": 183205.76, "median_round": 183206, "options": {"cad_num": "78:10:0005209", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 92, "cnt_land_geom": 75, "cnt_land_not_geom": 17, "cnt_oks": 71, "cnt_oks_geom": 1, "cnt_oks_not_geom": 70, "cnt_pik": 0, "cost_value_total_geom": 4417999401.58, "date_cr": "2020-08-24", "guid": "2bb69c9b-47eb-47dc-a37e-af9fea308475", "id": 4424066, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005209", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005209", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 282396, "sum_land_geom_area": 259220, "tolerance": "0.10", "ua_id": 7347006}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.01486", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.235295", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.397722747, 60.01303159799998], [30.405844321000004, 60.01098378399999], [30.408435802, 60.010336730000006], [30.417341002, 60.01921941300001], [30.407560025000002, 60.021673819000014], [30.406663885000004, 60.021963980999985], [30.397722747, 60.01303159799998]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005211", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 3, "descr": "78:10:0005211", "externalKey": "78:10:0005211", "interactionId": 111457382, "label": "78:10:0005211", "median": 194050.99, "median_round": 194051, "options": {"cad_num": "78:10:0005211", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 141, "cnt_land_geom": 122, "cnt_land_not_geom": 19, "cnt_oks": 101, "cnt_oks_geom": 5, "cnt_oks_not_geom": 96, "cnt_pik": 0, "cost_value_total_geom": 6391199733.85, "date_cr": "2020-08-24", "guid": "cb6e33c6-5c3d-43a8-9d3c-f686b252a431", "id": 4424144, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005211", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005211", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 435362, "sum_land_geom_area": 422027, "tolerance": "0.10", "ua_id": 7346908}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.738919", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.242741", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.385596893, 60.015573541999984], [30.391655406000005, 60.01451634500001], [30.393770211000003, 60.014038479], [30.397722747, 60.01303159799998], [30.406663885000004, 60.021963980999985], [30.39530685, 60.02512556099999], [30.392764537000005, 60.02277790699999], [30.388420996, 60.018800129000006], [30.386756377, 60.017214509], [30.386425423999995, 60.016818750000006], [30.385596893, 60.015573541999984]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005212", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 1, "descr": "78:10:0005212", "externalKey": "78:10:0005212", "interactionId": 111457362, "label": "78:10:0005212", "median": 207865.17, "median_round": 207865, "options": {"cad_num": "78:10:0005212", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 178, "cnt_land_geom": 142, "cnt_land_not_geom": 36, "cnt_oks": 117, "cnt_oks_geom": 3, "cnt_oks_not_geom": 114, "cnt_pik": 0, "cost_value_total_geom": 7444782711.82, "date_cr": "2020-08-24", "guid": "cc5af886-9fb9-48a7-a698-32aef6137444", "id": 4424128, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005212", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005212", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 539577, "sum_land_geom_area": 475687, "tolerance": "0.10", "ua_id": 7346936}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.532749", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.240654", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.408435802, 60.010336730000006], [30.408689513000002, 60.01026772999999], [30.422956687000003, 60.006689996000006], [30.432268194000002, 60.014553161], [30.432065523, 60.015510279999994], [30.417341002, 60.01921941300001], [30.408435802, 60.010336730000006]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005217", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 9, "descr": "78:10:0005217", "externalKey": "78:10:0005217", "interactionId": 111457280, "label": "78:10:0005217", "median": 179797.98, "median_round": 179798, "options": {"cad_num": "78:10:0005217", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 178, "cnt_land_geom": 161, "cnt_land_not_geom": 17, "cnt_oks": 135, "cnt_oks_geom": 3, "cnt_oks_not_geom": 132, "cnt_pik": 0, "cost_value_total_geom": 9560991509.19, "date_cr": "2020-08-24", "guid": "9cf0c357-815e-405c-b602-49659e2a717d", "id": 4424040, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005217", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005217", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 537249, "sum_land_geom_area": 519292, "tolerance": "0.10", "ua_id": 7346968}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:00.734347", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.245837", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.404998858000003, 60.00664031899999], [30.415282665, 60.00337175400001], [30.415586919, 60.003336690000005], [30.416178788, 60.00336893499999], [30.417012490000005, 60.003533256999994], [30.417947132, 60.003742133], [30.418447466999996, 60.003905704000005], [30.419013121999996, 60.00413189700001], [30.419705336999996, 60.00444385200001], [30.420372450000002, 60.00475408899999], [30.420431007, 60.00490523400001], [30.421774384, 60.006044198], [30.422323425999995, 60.00615760400001], [30.422956687000003, 60.006689996000006], [30.408689513000002, 60.01026772999999], [30.404998858000003, 60.00664031899999]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005218", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 9, "descr": "78:10:0005218", "externalKey": "78:10:0005218", "interactionId": 111457274, "label": "78:10:0005218", "median": 197238.66, "median_round": 197239, "options": {"cad_num": "78:10:0005218", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 81, "cnt_land_geom": 70, "cnt_land_not_geom": 11, "cnt_oks": 75, "cnt_oks_geom": 2, "cnt_oks_not_geom": 73, "cnt_pik": 0, "cost_value_total_geom": 5090682666.85, "date_cr": "2020-08-24", "guid": "5cf2cbcf-7908-469d-9fd6-14631f4d6557", "id": 4424041, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005218", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005218", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 266732, "sum_land_geom_area": 238163, "tolerance": "0.10", "ua_id": 7346966}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:00.679164", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.244723", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}, {"geometry": {"coordinates": [[[30.427121531, 59.993263926000004], [30.428789414, 59.992828405], [30.433425021, 59.991621658], [30.437896071, 59.995834514], [30.43791082, 59.99636789600001], [30.437457221999995, 59.998074977000016], [30.435004310999997, 59.997926445999994], [30.434625923999995, 59.997919523], [30.433978021, 59.997926588000006], [30.433399409, 59.997956491000004], [30.432780157, 59.998016953000004], [30.432233830999998, 59.99810427999999], [30.429875461, 59.995860846000014], [30.428815585999995, 59.99485244900001], [30.427121531, 59.993263926000004]]], "crs": {"properties": {"name": "EPSG:3857"}, "type": "name"}, "type": "Polygon"}, "properties": {"cadastralDistrictsCode": 78, "cadnum": "78:10:0005225", "category": 36381, "categoryName": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0435 \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044b", "count": 2, "descr": "78:10:0005225", "externalKey": "78:10:0005225", "interactionId": 111457317, "label": "78:10:0005225", "median": 158923.865, "median_round": 158924, "options": {"cad_num": "78:10:0005225", "cad_num_ko": "78", "cad_num_kr": "78:10", "cnt_enk": 0, "cnt_land": 36, "cnt_land_geom": 31, "cnt_land_not_geom": 5, "cnt_oks": 25, "cnt_oks_geom": 2, "cnt_oks_not_geom": 23, "cnt_pik": 0, "cost_value_total_geom": 1764012030.64, "date_cr": "2020-08-24", "guid": "d20c8263-bd55-4789-8d3d-e4bf9c0634ad", "id": 4424062, "is_actual": true, "is_conditional": false, "kr_id": 11457, "note": "78:10:0005225", "obj_kind": "\u041a\u041a", "obj_kind_value": "\u041a\u0430\u0434\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 \u043a\u0432\u0430\u0440\u0442\u0430\u043b", "obj_label": "78:10:0005225", "real_srid": 99781, "reg_code": "178", "status": "A", "subcat": 1, "sum_land_area": 120009, "sum_land_geom_area": 119914, "tolerance": "0.10", "ua_id": 7347014}, "subcategory": 1, "systemInfo": {"inserted": "2024-03-02T09:24:01.103221", "insertedBy": "67626EFA-5236-4BB3-B5FB-35CEEBD6BB53", "updated": "2025-11-22T01:35:20.252685", "updatedBy": "7EF5CD0B-AC08-4097-AF2B-07CD85992A79"}}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_b7ec4d227955ebb713f8bf5efc689f23.addTo(feature_group_f48503a6a3f1011726f46d970d5127ee);
+        
+    
+            feature_group_f48503a6a3f1011726f46d970d5127ee.addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+        
+    
+    var color_map_e4ee7636fe6d976a17aee58617dc0ad7 = {};
+
+    
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.color = d3.scale.threshold()
+              .domain([158923.865, 159021.94376753506, 159120.02253507014, 159218.1013026052, 159316.18007014028, 159414.25883767536, 159512.3376052104, 159610.41637274547, 159708.49514028055, 159806.57390781562, 159904.6526753507, 160002.73144288576, 160100.81021042084, 160198.8889779559, 160296.96774549098, 160395.04651302606, 160493.1252805611, 160591.20404809617, 160689.28281563125, 160787.36158316632, 160885.4403507014, 160983.51911823647, 161081.59788577154, 161179.6766533066, 161277.75542084168, 161375.83418837676, 161473.91295591183, 161571.99172344687, 161670.07049098195, 161768.14925851702, 161866.2280260521, 161964.30679358717, 162062.38556112224, 162160.4643286573, 162258.54309619238, 162356.62186372746, 162454.70063126253, 162552.77939879757, 162650.85816633265, 162748.93693386772, 162847.0157014028, 162945.09446893787, 163043.17323647294, 163141.252004008, 163239.3307715431, 163337.40953907816, 163435.48830661323, 163533.56707414828, 163631.64584168335, 163729.72460921842, 163827.8033767535, 163925.88214428857, 164023.96091182364, 164122.0396793587, 164220.1184468938, 164318.19721442886, 164416.27598196393, 164514.354749499, 164612.43351703405, 164710.51228456912, 164808.5910521042, 164906.66981963927, 165004.74858717434, 165102.8273547094, 165200.9061222445, 165298.98488977956, 165397.06365731463, 165495.1424248497, 165593.22119238475, 165691.29995991982, 165789.3787274549, 165887.45749498997, 165985.53626252504, 166083.61503006011, 166181.6937975952, 166279.77256513026, 166377.85133266533, 166475.9301002004, 166574.00886773545, 166672.08763527052, 166770.1664028056, 166868.24517034067, 166966.32393787574, 167064.40270541082, 167162.4814729459, 167260.56024048096, 167358.63900801603, 167456.7177755511, 167554.79654308618, 167652.87531062122, 167750.9540781563, 167849.03284569137, 167947.11161322644, 168045.19038076152, 168143.2691482966, 168241.34791583166, 168339.42668336674, 168437.5054509018, 168535.58421843688, 168633.66298597195, 168731.741753507, 168829.82052104207, 168927.89928857714, 169025.97805611222, 169124.0568236473, 169222.13559118236, 169320.21435871744, 169418.2931262525, 169516.37189378758, 169614.45066132263, 169712.5294288577, 169810.60819639277, 169908.68696392784, 170006.76573146292, 170104.844498998, 170202.92326653306, 170301.00203406814, 170399.0808016032, 170497.15956913828, 170595.23833667336, 170693.3171042084, 170791.39587174347, 170889.47463927855, 170987.55340681362, 171085.6321743487, 171183.71094188376, 171281.78970941884, 171379.8684769539, 171477.94724448898, 171576.02601202406, 171674.10477955913, 171772.18354709417, 171870.26231462925, 171968.34108216432, 172066.4198496994, 172164.49861723447, 172262.57738476954, 172360.6561523046, 172458.73491983968, 172556.81368737476, 172654.8924549098, 172752.97122244487, 172851.04998997995, 172949.12875751502, 173047.2075250501, 173145.28629258517, 173243.36506012024, 173341.4438276553, 173439.52259519038, 173537.60136272546, 173635.68013026053, 173733.75889779557, 173831.83766533065, 173929.91643286572, 174027.9952004008, 174126.07396793587, 174224.15273547094, 174322.231503006, 174420.3102705411, 174518.38903807616, 174616.46780561123, 174714.5465731463, 174812.62534068135, 174910.70410821642, 175008.7828757515, 175106.86164328657, 175204.94041082164, 175303.0191783567, 175401.0979458918, 175499.17671342686, 175597.25548096193, 175695.334248497, 175793.41301603208, 175891.49178356712, 175989.5705511022, 176087.64931863727, 176185.72808617234, 176283.8068537074, 176381.8856212425, 176479.96438877756, 176578.04315631263, 176676.1219238477, 176774.20069138275, 176872.27945891782, 176970.3582264529, 177068.43699398797, 177166.51576152304, 177264.59452905811, 177362.6732965932, 177460.75206412826, 177558.83083166333, 177656.9095991984, 177754.98836673348, 177853.06713426852, 177951.1459018036, 178049.22466933867, 178147.30343687374, 178245.38220440882, 178343.4609719439, 178441.53973947896, 178539.61850701403, 178637.6972745491, 178735.77604208418, 178833.85480961925, 178931.9335771543, 179030.01234468937, 179128.09111222444, 179226.16987975952, 179324.2486472946, 179422.32741482966, 179520.40618236474, 179618.4849498998, 179716.56371743488, 179814.64248496993, 179912.72125250503, 180010.80002004007, 180108.87878757514, 180206.95755511022, 180305.0363226453, 180403.11509018036, 180501.19385771544, 180599.2726252505, 180697.35139278558, 180795.43016032065, 180893.5089278557, 180991.58769539077, 181089.66646292584, 181187.74523046092, 181285.823997996, 181383.90276553106, 181481.98153306614, 181580.0603006012, 181678.13906813628, 181776.21783567136, 181874.29660320643, 181972.37537074147, 182070.45413827655, 182168.53290581162, 182266.6116733467, 182364.69044088176, 182462.76920841684, 182560.8479759519, 182658.92674348698, 182757.00551102206, 182855.0842785571, 182953.16304609217, 183051.24181362725, 183149.32058116232, 183247.3993486974, 183345.47811623247, 183443.55688376754, 183541.6356513026, 183639.71441883768, 183737.79318637276, 183835.87195390783, 183933.95072144287, 184032.02948897795, 184130.10825651302, 184228.1870240481, 184326.26579158317, 184424.34455911824, 184522.4233266533, 184620.50209418838, 184718.58086172346, 184816.6596292585, 184914.7383967936, 185012.81716432865, 185110.89593186372, 185208.9746993988, 185307.05346693387, 185405.13223446894, 185503.211002004, 185601.2897695391, 185699.36853707416, 185797.44730460923, 185895.52607214428, 185993.60483967935, 186091.68360721442, 186189.7623747495, 186287.84114228457, 186385.91990981964, 186483.9986773547, 186582.0774448898, 186680.15621242486, 186778.23497995993, 186876.313747495, 186974.39251503005, 187072.47128256512, 187170.5500501002, 187268.62881763527, 187366.70758517034, 187464.7863527054, 187562.8651202405, 187660.94388777556, 187759.02265531063, 187857.1014228457, 187955.18019038078, 188053.25895791582, 188151.3377254509, 188249.41649298597, 188347.49526052104, 188445.57402805611, 188543.6527955912, 188641.73156312626, 188739.81033066133, 188837.8890981964, 188935.96786573148, 189034.04663326655, 189132.1254008016, 189230.20416833667, 189328.28293587174, 189426.36170340682, 189524.4404709419, 189622.51923847696, 189720.59800601203, 189818.6767735471, 189916.75554108218, 190014.83430861722, 190112.91307615233, 190210.99184368737, 190309.07061122244, 190407.14937875752, 190505.2281462926, 190603.30691382766, 190701.38568136274, 190799.4644488978, 190897.54321643288, 190995.62198396795, 191093.700751503, 191191.77951903807, 191289.85828657314, 191387.93705410822, 191486.0158216433, 191584.09458917836, 191682.17335671344, 191780.2521242485, 191878.33089178358, 191976.40965931863, 192074.48842685373, 192172.56719438877, 192270.64596192384, 192368.72472945892, 192466.803496994, 192564.88226452906, 192662.96103206414, 192761.0397995992, 192859.11856713428, 192957.19733466936, 193055.2761022044, 193153.3548697395, 193251.43363727455, 193349.51240480962, 193447.5911723447, 193545.66993987976, 193643.74870741484, 193741.8274749499, 193839.90624248498, 193937.98501002006, 194036.06377755513, 194134.14254509017, 194232.22131262528, 194330.30008016032, 194428.3788476954, 194526.45761523047, 194624.53638276554, 194722.6151503006, 194820.69391783568, 194918.77268537076, 195016.85145290583, 195114.9302204409, 195213.00898797595, 195311.08775551102, 195409.1665230461, 195507.24529058117, 195605.32405811624, 195703.4028256513, 195801.48159318638, 195899.56036072146, 195997.63912825653, 196095.7178957916, 196193.79666332668, 196291.87543086172, 196389.9541983968, 196488.03296593187, 196586.11173346694, 196684.190501002, 196782.2692685371, 196880.34803607216, 196978.4268036072, 197076.5055711423, 197174.58433867735, 197272.66310621245, 197370.7418737475, 197468.82064128257, 197566.89940881764, 197664.9781763527, 197763.0569438878, 197861.13571142286, 197959.21447895793, 198057.29324649298, 198155.37201402808, 198253.45078156312, 198351.52954909822, 198449.60831663327, 198547.68708416834, 198645.7658517034, 198743.8446192385, 198841.92338677356, 198940.00215430863, 199038.0809218437, 199136.15968937875, 199234.23845691385, 199332.3172244489, 199430.39599198397, 199528.47475951904, 199626.55352705411, 199724.6322945892, 199822.71106212426, 199920.78982965933, 200018.8685971944, 200116.94736472948, 200215.02613226452, 200313.1048997996, 200411.18366733467, 200509.26243486974, 200607.34120240482, 200705.4199699399, 200803.49873747496, 200901.57750501003, 200999.6562725451, 201097.73504008018, 201195.81380761525, 201293.8925751503, 201391.97134268537, 201490.05011022044, 201588.12887775552, 201686.2076452906, 201784.28641282566, 201882.36518036074, 201980.4439478958, 202078.52271543088, 202176.60148296593, 202274.68025050103, 202372.75901803607, 202470.83778557114, 202568.91655310622, 202666.9953206413, 202765.07408817636, 202863.15285571144, 202961.2316232465, 203059.31039078158, 203157.38915831666, 203255.4679258517, 203353.5466933868, 203451.62546092184, 203549.70422845692, 203647.782995992, 203745.86176352706, 203843.94053106214, 203942.0192985972, 204040.09806613228, 204138.17683366736, 204236.25560120243, 204334.33436873747, 204432.41313627257, 204530.49190380762, 204628.5706713427, 204726.64943887776, 204824.72820641284, 204922.8069739479, 205020.88574148298, 205118.96450901806, 205217.04327655313, 205315.1220440882, 205413.20081162325, 205511.27957915832, 205609.3583466934, 205707.43711422847, 205805.51588176354, 205903.5946492986, 206001.67341683368, 206099.75218436876, 206197.83095190383, 206295.9097194389, 206393.98848697398, 206492.06725450902, 206590.1460220441, 206688.22478957917, 206786.30355711424, 206884.3823246493, 206982.46109218439, 207080.53985971946, 207178.6186272545, 207276.6973947896, 207374.77616232465, 207472.85492985975, 207570.9336973948, 207669.01246492987, 207767.09123246494, 207865.17])
+              .range(['#ffffffff', '#ffffffff', '#ffffffff', '#ffffffff', '#ffffffff', '#fefefeff', '#fefefeff', '#fefefeff', '#fefefeff', '#fdfdfdff', '#fdfdfdff', '#fdfdfdff', '#fdfdfdff', '#fcfcfcff', '#fcfcfcff', '#fcfcfcff', '#fcfcfcff', '#fbfbfbff', '#fbfbfbff', '#fbfbfbff', '#fbfbfbff', '#fafafaff', '#fafafaff', '#fafafaff', '#fafafaff', '#f9f9f9ff', '#f9f9f9ff', '#f9f9f9ff', '#f9f9f9ff', '#f8f8f8ff', '#f8f8f8ff', '#f8f8f8ff', '#f8f8f8ff', '#f8f8f8ff', '#f7f7f7ff', '#f7f7f7ff', '#f7f7f7ff', '#f7f7f7ff', '#f6f6f6ff', '#f6f6f6ff', '#f6f6f6ff', '#f6f6f6ff', '#f5f5f5ff', '#f5f5f5ff', '#f5f5f5ff', '#f5f5f5ff', '#f4f4f4ff', '#f4f4f4ff', '#f4f4f4ff', '#f4f4f4ff', '#f3f3f3ff', '#f3f3f3ff', '#f3f3f3ff', '#f3f3f3ff', '#f2f2f2ff', '#f2f2f2ff', '#f2f2f2ff', '#f2f2f2ff', '#f1f1f1ff', '#f1f1f1ff', '#f1f1f1ff', '#f1f1f1ff', '#f1f1f1ff', '#f0f0f0ff', '#f0f0f0ff', '#efefefff', '#efefefff', '#efefefff', '#eeeeeeff', '#eeeeeeff', '#eeeeeeff', '#edededff', '#edededff', '#edededff', '#ecececff', '#ecececff', '#ebebebff', '#ebebebff', '#ebebebff', '#eaeaeaff', '#eaeaeaff', '#eaeaeaff', '#e9e9e9ff', '#e9e9e9ff', '#e8e8e8ff', '#e8e8e8ff', '#e8e8e8ff', '#e7e7e7ff', '#e7e7e7ff', '#e7e7e7ff', '#e6e6e6ff', '#e6e6e6ff', '#e5e5e5ff', '#e5e5e5ff', '#e5e5e5ff', '#e4e4e4ff', '#e4e4e4ff', '#e4e4e4ff', '#e3e3e3ff', '#e3e3e3ff', '#e3e3e3ff', '#e2e2e2ff', '#e2e2e2ff', '#e1e1e1ff', '#e1e1e1ff', '#e1e1e1ff', '#e0e0e0ff', '#e0e0e0ff', '#e0e0e0ff', '#dfdfdfff', '#dfdfdfff', '#dededeff', '#dededeff', '#dededeff', '#ddddddff', '#ddddddff', '#ddddddff', '#dcdcdcff', '#dcdcdcff', '#dbdbdbff', '#dbdbdbff', '#dbdbdbff', '#dadadaff', '#dadadaff', '#dadadaff', '#d9d9d9ff', '#d9d9d9ff', '#d8d8d8ff', '#d8d8d8ff', '#d7d7d7ff', '#d7d7d7ff', '#d7d7d7ff', '#d6d6d6ff', '#d6d6d6ff', '#d5d5d5ff', '#d5d5d5ff', '#d4d4d4ff', '#d4d4d4ff', '#d3d3d3ff', '#d3d3d3ff', '#d2d2d2ff', '#d2d2d2ff', '#d2d2d2ff', '#d1d1d1ff', '#d1d1d1ff', '#d0d0d0ff', '#d0d0d0ff', '#cfcfcfff', '#cfcfcfff', '#cececeff', '#cececeff', '#cececeff', '#cdcdcdff', '#cdcdcdff', '#ccccccff', '#ccccccff', '#cbcbcbff', '#cbcbcbff', '#cacacaff', '#cacacaff', '#c9c9c9ff', '#c9c9c9ff', '#c9c9c9ff', '#c8c8c8ff', '#c8c8c8ff', '#c7c7c7ff', '#c7c7c7ff', '#c6c6c6ff', '#c6c6c6ff', '#c5c5c5ff', '#c5c5c5ff', '#c5c5c5ff', '#c4c4c4ff', '#c4c4c4ff', '#c3c3c3ff', '#c3c3c3ff', '#c2c2c2ff', '#c2c2c2ff', '#c1c1c1ff', '#c1c1c1ff', '#c0c0c0ff', '#c0c0c0ff', '#c0c0c0ff', '#bfbfbfff', '#bfbfbfff', '#bebebeff', '#bebebeff', '#bdbdbdff', '#bdbdbdff', '#bcbcbcff', '#bbbbbbff', '#bbbbbbff', '#bababaff', '#bababaff', '#b9b9b9ff', '#b8b8b8ff', '#b8b8b8ff', '#b7b7b7ff', '#b6b6b6ff', '#b6b6b6ff', '#b5b5b5ff', '#b5b5b5ff', '#b4b4b4ff', '#b3b3b3ff', '#b3b3b3ff', '#b2b2b2ff', '#b1b1b1ff', '#b1b1b1ff', '#b0b0b0ff', '#b0b0b0ff', '#afafafff', '#aeaeaeff', '#aeaeaeff', '#adadadff', '#acacacff', '#acacacff', '#abababff', '#aaaaaaff', '#aaaaaaff', '#a9a9a9ff', '#a9a9a9ff', '#a8a8a8ff', '#a7a7a7ff', '#a7a7a7ff', '#a6a6a6ff', '#a5a5a5ff', '#a5a5a5ff', '#a4a4a4ff', '#a4a4a4ff', '#a3a3a3ff', '#a2a2a2ff', '#a2a2a2ff', '#a1a1a1ff', '#a0a0a0ff', '#a0a0a0ff', '#9f9f9fff', '#9f9f9fff', '#9e9e9eff', '#9d9d9dff', '#9d9d9dff', '#9c9c9cff', '#9b9b9bff', '#9b9b9bff', '#9a9a9aff', '#9a9a9aff', '#999999ff', '#989898ff', '#989898ff', '#979797ff', '#969696ff', '#969696ff', '#959595ff', '#959595ff', '#949494ff', '#949494ff', '#939393ff', '#929292ff', '#929292ff', '#919191ff', '#919191ff', '#909090ff', '#909090ff', '#8f8f8fff', '#8e8e8eff', '#8e8e8eff', '#8d8d8dff', '#8d8d8dff', '#8c8c8cff', '#8c8c8cff', '#8b8b8bff', '#8b8b8bff', '#8a8a8aff', '#898989ff', '#898989ff', '#888888ff', '#888888ff', '#878787ff', '#878787ff', '#868686ff', '#858585ff', '#858585ff', '#848484ff', '#848484ff', '#838383ff', '#838383ff', '#828282ff', '#828282ff', '#818181ff', '#808080ff', '#808080ff', '#7f7f7fff', '#7f7f7fff', '#7e7e7eff', '#7e7e7eff', '#7d7d7dff', '#7c7c7cff', '#7c7c7cff', '#7b7b7bff', '#7b7b7bff', '#7a7a7aff', '#7a7a7aff', '#797979ff', '#797979ff', '#787878ff', '#777777ff', '#777777ff', '#767676ff', '#767676ff', '#757575ff', '#757575ff', '#747474ff', '#737373ff', '#737373ff', '#727272ff', '#727272ff', '#717171ff', '#717171ff', '#707070ff', '#707070ff', '#6f6f6fff', '#6f6f6fff', '#6e6e6eff', '#6e6e6eff', '#6d6d6dff', '#6d6d6dff', '#6c6c6cff', '#6b6b6bff', '#6b6b6bff', '#6a6a6aff', '#6a6a6aff', '#696969ff', '#696969ff', '#686868ff', '#686868ff', '#676767ff', '#676767ff', '#666666ff', '#666666ff', '#656565ff', '#656565ff', '#646464ff', '#636363ff', '#636363ff', '#626262ff', '#626262ff', '#616161ff', '#616161ff', '#606060ff', '#606060ff', '#5f5f5fff', '#5f5f5fff', '#5e5e5eff', '#5e5e5eff', '#5d5d5dff', '#5d5d5dff', '#5c5c5cff', '#5c5c5cff', '#5b5b5bff', '#5a5a5aff', '#5a5a5aff', '#595959ff', '#595959ff', '#585858ff', '#585858ff', '#575757ff', '#575757ff', '#565656ff', '#565656ff', '#555555ff', '#555555ff', '#545454ff', '#545454ff', '#535353ff', '#525252ff', '#525252ff', '#515151ff', '#515151ff', '#505050ff', '#4f4f4fff', '#4e4e4eff', '#4e4e4eff', '#4d4d4dff', '#4c4c4cff', '#4b4b4bff', '#4b4b4bff', '#4a4a4aff', '#494949ff', '#494949ff', '#484848ff', '#474747ff', '#464646ff', '#464646ff', '#454545ff', '#444444ff', '#444444ff', '#434343ff', '#424242ff', '#414141ff', '#414141ff', '#404040ff', '#3f3f3fff', '#3e3e3eff', '#3e3e3eff', '#3d3d3dff', '#3c3c3cff', '#3c3c3cff', '#3b3b3bff', '#3a3a3aff', '#393939ff', '#393939ff', '#383838ff', '#373737ff', '#363636ff', '#363636ff', '#353535ff', '#343434ff', '#343434ff', '#333333ff', '#323232ff', '#313131ff', '#313131ff', '#303030ff', '#2f2f2fff', '#2f2f2fff', '#2e2e2eff', '#2d2d2dff', '#2c2c2cff', '#2c2c2cff', '#2b2b2bff', '#2a2a2aff', '#292929ff', '#292929ff', '#282828ff', '#272727ff', '#272727ff', '#262626ff', '#252525ff', '#242424ff', '#242424ff', '#232323ff', '#232323ff', '#222222ff', '#212121ff', '#212121ff', '#202020ff', '#202020ff', '#1f1f1fff', '#1e1e1eff', '#1e1e1eff', '#1d1d1dff', '#1d1d1dff', '#1c1c1cff', '#1b1b1bff', '#1b1b1bff', '#1a1a1aff', '#1a1a1aff', '#191919ff', '#191919ff', '#181818ff', '#171717ff', '#171717ff', '#161616ff', '#161616ff', '#151515ff', '#141414ff', '#141414ff', '#131313ff', '#131313ff', '#121212ff', '#111111ff', '#111111ff', '#101010ff', '#101010ff', '#0f0f0fff', '#0e0e0eff', '#0e0e0eff', '#0d0d0dff', '#0d0d0dff', '#0c0c0cff', '#0b0b0bff', '#0b0b0bff', '#0a0a0aff', '#0a0a0aff', '#090909ff', '#080808ff', '#080808ff', '#070707ff', '#070707ff', '#060606ff', '#050505ff', '#050505ff', '#040404ff', '#040404ff', '#030303ff', '#020202ff', '#020202ff', '#010101ff', '#010101ff', '#000000ff', '#000000ff']);
+    
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.x = d3.scale.linear()
+              .domain([158923.865, 207865.17])
+              .range([0, 450 - 50]);
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.legend = L.control({position: 'topright'});
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.legend.addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.xAxis = d3.svg.axis()
+        .scale(color_map_e4ee7636fe6d976a17aee58617dc0ad7.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([158923.865, 165041.52812499998, 171159.19125, 177276.854375, 183394.51750000002, 189512.180625, 195629.84375, 201747.50687500002, 207865.17]);
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.g = color_map_e4ee7636fe6d976a17aee58617dc0ad7.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.g.selectAll("rect")
+        .data(color_map_e4ee7636fe6d976a17aee58617dc0ad7.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_e4ee7636fe6d976a17aee58617dc0ad7.x(color_map_e4ee7636fe6d976a17aee58617dc0ad7.color.domain()[i - 1]) : color_map_e4ee7636fe6d976a17aee58617dc0ad7.x.range()[0],
+            x1: i < color_map_e4ee7636fe6d976a17aee58617dc0ad7.color.domain().length ? color_map_e4ee7636fe6d976a17aee58617dc0ad7.x(color_map_e4ee7636fe6d976a17aee58617dc0ad7.color.domain()[i]) : color_map_e4ee7636fe6d976a17aee58617dc0ad7.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_e4ee7636fe6d976a17aee58617dc0ad7.g.call(color_map_e4ee7636fe6d976a17aee58617dc0ad7.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("\u041c\u0435\u0434\u0438\u0430\u043d\u0430 \u0446\u0435\u043d\u044b \u0437\u0430 \u043a\u0432.\u043c (1964-1972, \u0441\u0434\u0435\u043b\u043a\u0438 01.07.2025)");
+    
+            var layer_control_61ab5b4b51847c1a77a988cdc9eb1729_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_108f06bf494775e9b3045c8432358967,
+                },
+                overlays :  {
+                    "\u041c\u0435\u0434\u0438\u0430\u043d\u0430 \u0446\u0435\u043d\u044b \u0437\u0430 \u043a\u0432.\u043c" : geo_json_4ead44035bc8587e40f915b66891862e,
+                    "\u041f\u043e\u0434\u043f\u0438\u0441\u0438" : feature_group_12b7844f9a68ece346a88a882175a56a,
+                    "\u0413\u0440\u0430\u043d\u0438\u0446\u044b" : feature_group_f48503a6a3f1011726f46d970d5127ee,
+                },
+            };
+            let layer_control_61ab5b4b51847c1a77a988cdc9eb1729 = L.control.layers(
+                layer_control_61ab5b4b51847c1a77a988cdc9eb1729_layers.base_layers,
+                layer_control_61ab5b4b51847c1a77a988cdc9eb1729_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_c7d9bd476e036f4705f8ac1ca9506c4a);
+
+        
+</script>
+</html>
